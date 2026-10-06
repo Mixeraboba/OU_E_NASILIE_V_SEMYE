@@ -28,6 +28,16 @@ export default function App() {
     }
   }
 
+  const getUserName = (userId) => {
+  const user = users.find(u => u.id === userId)
+  return user ? user.name : `Пользователь #${userId}`
+}
+
+const getProductName = (productId) => {
+  const product = products.find(p => p.id === productId)
+  return product ? product.name : `Товар #${productId}`
+}
+
   useEffect(() => { loadAll() }, [])
 
   // --- Пользователи ---
@@ -151,13 +161,23 @@ export default function App() {
       </form>
 
       <ul>
-        {orders.map(o => (
-          <li key={o.id}>
-            #{o.id} — пользователь {o.userId} — сумма {o.total}₽ — статус {o.status}
-            <button onClick={() => deleteOrder(o.id)} style={{ marginLeft: 10 }}>Удалить</button>
-          </li>
+  {orders.map(o => (
+    <li key={o.id} style={{ marginBottom: 10 }}>
+      <b>#{o.id}</b> — пользователь: <b>{getUserName(o.userId)}</b> — сумма: {o.total}₽ — статус: {o.updatedAt}
+      <br />
+      <span style={{ fontSize: 13, color: '#555' }}>
+        Товары:{' '}
+        {o.items?.map(it => (
+          <span key={it.id}>
+            {getProductName(it.productId)} × {it.quantity} ({it.price}₽)
+            {it !== o.items[o.items.length - 1] ? ', ' : ''}
+          </span>
         ))}
-      </ul>
+      </span>
+      <button onClick={() => deleteOrder(o.id)} style={{ marginLeft: 10 }}>Удалить</button>
+    </li>
+  ))}
+</ul>
     </div>
   )
 }
