@@ -7,7 +7,7 @@ npm install
 npm start
 ```
 ```bash
-cs client
+cd client
 npm install
 npm ru dev
 ```
