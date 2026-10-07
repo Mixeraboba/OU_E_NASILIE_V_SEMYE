@@ -5,19 +5,30 @@ body {
 }
 
 body {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%; /* Увеличиваем размер, чтобы градиент не повторялся сразу */
-  animation: gradientShift 1s ease infinite;
+  background-image: url("https://tenor.com/ru/view/nyan-cat-rainbow-cat-kitten-kitty-gif-5716621.gif");
 }
 
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+input {
+  height: 41px;
+  border: #535353 2px solid;
+  margin: 0px 5px;
+  border-radius: 10px;
+  padding: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+button {
+  height: 41px;
+  width: 150px;
+  background-color: #C03626;
+  border: #7b251b 3px solid;
+  border-radius: 10px;
+  font-weight: bold;
+  color: white;
+}
+
+span, h1, h2, h3, p {
+  color: rgb(218, 206, 74);
+  -webkit-text-stroke: #535353 2px ;
 }

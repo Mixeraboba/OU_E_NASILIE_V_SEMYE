@@ -40,7 +40,11 @@ app.use('/api/products', productsRouter)
 app.use('/api/orders', ordersRouter)
 
 export const initDB = async () => {
-  await sequelize.sync({ alter: true })
+  if (sequelize.getDialect() === 'sqlite') {
+    await sequelize.query('PRAGMA foreign_keys = OFF');
+  }
+  await sequelize.sync({ force: true })
+  await sequelize.query('PRAGMA foreign_keys = OFF');
   console.log('Арз скопировал мой код')
 }
 

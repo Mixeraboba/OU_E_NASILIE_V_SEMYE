@@ -40,7 +40,6 @@ const getProductName = (productId) => {
 
   useEffect(() => { loadAll() }, [])
 
-  // --- Пользователи ---
   const createUser = async (e) => {
     e.preventDefault()
     try {
@@ -58,7 +57,6 @@ const getProductName = (productId) => {
     catch (e) { setMessage('Ошибка: ' + (e.response?.data?.error || e.message)) }
   }
 
-  // --- Товары ---
   const createProduct = async (e) => {
     e.preventDefault()
     try {
